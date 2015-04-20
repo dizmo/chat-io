@@ -17,4 +17,10 @@ dizmo.onShowFront(function() {
 document.addEventListener('dizmoready', function() {
     console.log("ready");
     var socket = io('http://localhost:3000');
+
+    $('form').submit(function(){
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+        return false;
+    });
 });
